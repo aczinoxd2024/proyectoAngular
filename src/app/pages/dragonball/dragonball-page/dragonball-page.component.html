@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DragonBall Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+          font-family: 'Roboto', sans-serif;
+          margin: 40px;
+          background-color: #f0f0f0;
+          color: #333;
+      }
+      h1 {
+          text-align: center;
+          color: #c03d2d;
+      }
+      .container {
+          display: flex;
+          justify-content: space-between;
+          width: 90%;
+          max-width: 1000px;
+          margin: auto;
+          background: white;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          border-radius: 8px;
+          padding: 20px;
+      }
+      .input-area {
+          flex: 1;
+          margin-right: 30px;
+      }
+      input[type="text"] {
+          display: block;
+          margin-bottom: 10px;
+          padding: 10px;
+          width: 100%;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+      }
+      button {
+          padding: 10px 15px;
+          background-color: #1a73e8;
+          color: white;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+      }
+      button:hover {
+          background-color: #1a5cb8;
+      }
+      .listado {
+          flex: 1;
+      }
+      ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+      }
+      li {
+          font-size: 18px;
+          margin-bottom: 5px;
+      }
+      .power {
+          color: red;
+          font-weight: bold;
+      }
+  </style>
+</head>
+<body>
+    <h1>DragonBall Page</h1>
+    <div class="container">
+        <div class="input-area">
+
+            <h3>Agregar:{{name()}}</h3>
+            <input
+            type="text"
+            class="form-control"
+            placeholder="Nombre"
+            [value]="name()"
+            (change)="name.set(txtName.value)"
+            (input)="name.set(txtName.value)"
+            #txtName
+            />
+
+            <input
+            type="number"
+            class="form-control mt-2"
+            placeholder="Poder"
+            [value]="power()"
+            (input)="power.set(+txtPower.value)"
+            #txtPower
+            />
+            <button (click)="addCharacter()" class="mt-2 btn btn-primary">
+              Agregar
+            </button>
+        </div>
+        <div class="listado">
+            <h2>Listado Fuertes</h2>
+            <ul>
+                @for (character of characters(); track character.id;let idx =$index) {
+                @if (character.power>500) {
+                  <li>
+                    <span>{{idx+1}}-{{character.name}}</span>
+                    <strong
+                      [class.text-danger]="character.power>9000"
+                      [class.text-info]="character.power<9000"
+                    >
+                    ({{character.power}})</strong
+                  >
+                  <!--[ngClass]="powerClasses()"-->
+                  </li>
+                }@else {
+                  <li><strong>Despues de Este Listado no vale la pena ver nada</strong></li>
+                }
+                }
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
