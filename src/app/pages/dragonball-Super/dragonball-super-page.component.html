@@ -74,14 +74,17 @@
     <div class="container">
         <div class="input-area">
 
-<dragonball-character-add></dragonball-character-add>
-        </div>
+<dragonball-character-add (newCharacter)="dragonballService.addCharacter($event)"
+/>
+
+
+</div>
 
         <div class="listado">
           <dragonball-character-list
           listName="Lista de Personajes"
-          [characters]="characters()"/>
-
+          [characters]="dragonballService.characters()"
+          />
         </div>
     </div>
 </body>

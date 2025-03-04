@@ -17,9 +17,9 @@ export class DragonballPageComponent {
 characters=signal<Character[]>([
 
   {id:1,name:'Goku',power:9001},
-  /* {id:2,name:'Vegeta',power:8001},
+   {id:2,name:'Vegeta',power:8001},
   {id:3,name:'Picoro',power:91},
-  {id:4,name:'Yamcha',power:5000}, */
+  {id:4,name:'Yamcha',power:5000},
 ]);
 
 name=signal('');

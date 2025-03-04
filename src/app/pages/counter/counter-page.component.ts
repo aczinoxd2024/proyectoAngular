@@ -1,17 +1,17 @@
 import { ChangeDetectionStrategy, Component, signal, ɵsetCurrentInjector } from "@angular/core";
 
 @Component({
-templateUrl: './counter-page.component.html',
-styles:`
-button{
-  pading:5px;
-  margin:5px 10px;
-  width:75px;
-}
-
-`,
-//changeDetection:ChangeDetectionStrategy.OnPush,
+  templateUrl: './counter-page.component.html',
+  styles: `
+    button {
+      padding: 5px;
+      margin: 5px 10px;
+      width: 75px;
+    }
+  `,
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class CounterPageComponent{
   counter=10;
   counterSignal=signal(10);
